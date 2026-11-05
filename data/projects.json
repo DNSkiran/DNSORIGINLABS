@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "legends-of-hanuman",
+      "title": "Legends of Hanuman",
+      "discipline": "CG / Compositing",
+      "year": "",
+      "status": "draft",
+      "summary": "Portfolio entry awaiting approved imagery, shot breakdown and accurate production credits.",
+      "credits": "Add verified role, studio and project permissions before publishing.",
+      "image": "",
+      "showreel": "",
+      "featured": true
+    },
+    {
+      "id": "silk-road-rally-races",
+      "title": "Silk Road Rally Races",
+      "discipline": "Environment / Automotive",
+      "year": "",
+      "status": "draft",
+      "summary": "Portfolio entry awaiting approved imagery, shot breakdown and accurate production credits.",
+      "credits": "Add verified role, studio and project permissions before publishing.",
+      "image": "",
+      "showreel": "",
+      "featured": true
+    },
+    {
+      "id": "arpo-robot-babysitter",
+      "title": "ARPO – The Robot Babysitter",
+      "discipline": "CG / Compositing",
+      "year": "",
+      "status": "draft",
+      "summary": "Portfolio entry awaiting approved imagery, shot breakdown and accurate production credits.",
+      "credits": "Add verified role, studio and project permissions before publishing.",
+      "image": "",
+      "showreel": "",
+      "featured": true
+    },
+    {
+      "id": "haunted-mansion",
+      "title": "Haunted Mansion",
+      "discipline": "Lighting / Compositing",
+      "year": "",
+      "status": "draft",
+      "summary": "Portfolio entry awaiting approved imagery, shot breakdown and accurate production credits.",
+      "credits": "Add verified role, studio and project permissions before publishing.",
+      "image": "",
+      "showreel": "",
+      "featured": false
+    },
+    {
+      "id": "jack-stalwart",
+      "title": "Jack Stalwart",
+      "discipline": "CG / Compositing",
+      "year": "",
+      "status": "draft",
+      "summary": "Portfolio entry awaiting approved imagery, shot breakdown and accurate production credits.",
+      "credits": "Add verified role, studio and project permissions before publishing.",
+      "image": "",
+      "showreel": "",
+      "featured": false
+    },
+    {
+      "id": "rudra",
+      "title": "Rudra",
+      "discipline": "CG / Lighting",
+      "year": "",
+      "status": "draft",
+      "summary": "Portfolio entry awaiting approved imagery, shot breakdown and accurate production credits.",
+      "credits": "Add verified role, studio and project permissions before publishing.",
+      "image": "",
+      "showreel": "",
+      "featured": false
+    },
+    {
+      "id": "eureka",
+      "title": "Eureka",
+      "discipline": "CG / Compositing",
+      "year": "",
+      "status": "draft",
+      "summary": "Portfolio entry awaiting approved imagery, shot breakdown and accurate production credits.",
+      "credits": "Add verified role, studio and project permissions before publishing.",
+      "image": "",
+      "showreel": "",
+      "featured": false
+    }
+  ]
+}

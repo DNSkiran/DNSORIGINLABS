@@ -1,0 +1,363 @@
+{
+  "version": 1,
+  "updated": "2026-11-05",
+  "categories": [
+    "All",
+    "Nuke",
+    "Maya",
+    "Blender",
+    "Unreal Engine",
+    "Python",
+    "Color Management",
+    "Image Processing",
+    "File Management",
+    "Automation",
+    "Desktop Applications",
+    "MEL Scripts",
+    "Scenes",
+    "Lighting"
+  ],
+  "items": [
+    {
+      "id": "dns-ocio-encoder",
+      "name": "DNS OCIO Encoder",
+      "shortName": "OCIO Encoder",
+      "category": "Color Management",
+      "tags": [
+        "OpenEXR",
+        "ProRes",
+        "OpenColorIO",
+        "FFmpeg"
+      ],
+      "description": "Convert OpenEXR image sequences into ProRes QuickTime movies with a color-managed workflow.",
+      "longDescription": "A desktop utility concept built around OpenColorIO and FFmpeg for turning rendered EXR sequences into review-ready QuickTime movies. Release details and supported builds will be listed here when published.",
+      "status": "In development",
+      "version": "1.0",
+      "platforms": [
+        "Windows"
+      ],
+      "features": [
+        "OpenEXR sequence input",
+        "OpenColorIO transform workflow",
+        "ProRes QuickTime output",
+        "FFmpeg-based encoding"
+      ],
+      "requirements": [
+        "Windows build and runtime requirements will be documented with the release."
+      ],
+      "docs": "../docs/ocio-encoder.html",
+      "repository": "https://github.com/DNSkiran/DNSORIGINLABS",
+      "release": {
+        "repo": "DNSkiran/DNSORIGINLABS",
+        "tag": "latest",
+        "assetName": ""
+      },
+      "downloadEnabled": true
+    },
+    {
+      "id": "nuke-folder-scanner",
+      "name": "Nuke Folder Scanner",
+      "shortName": "Folder Scanner",
+      "category": "Nuke",
+      "tags": [
+        "Nuke",
+        "Python",
+        "File Management"
+      ],
+      "description": "A planned helper for locating render folders and image sequences across inconsistent naming conventions.",
+      "longDescription": "Designed for production folders where render outputs may be named render, renders, HD_Renders, HDRenders or other common variants. The final feature set will be documented with a public release.",
+      "status": "Planned",
+      "version": "Planned",
+      "platforms": [
+        "Nuke / Python"
+      ],
+      "features": [
+        "Case-insensitive folder discovery",
+        "Nested render folder support",
+        "Sequence path reporting"
+      ],
+      "requirements": [
+        "Nuke Python environment"
+      ],
+      "docs": "../docs/nuke-workflow.html",
+      "repository": "https://github.com/DNSkiran/DNSORIGINLABS",
+      "release": null,
+      "downloadEnabled": false
+    },
+    {
+      "id": "python-production-kit",
+      "name": "Python Production Kit",
+      "shortName": "Python Kit",
+      "category": "Python",
+      "tags": [
+        "Python",
+        "Automation",
+        "Pipeline"
+      ],
+      "description": "Reusable Python patterns and scripts for file handling, validation, logging and production automation.",
+      "longDescription": "A planned collection of practical pipeline scripting examples: pathlib, structured logging, regular expressions, JSON/YAML configuration, CLI tools and tests.",
+      "status": "Planned",
+      "version": "Planned",
+      "platforms": [
+        "Windows",
+        "Linux"
+      ],
+      "features": [
+        "Path and sequence utilities",
+        "Logging patterns",
+        "Config-driven tools",
+        "CLI examples"
+      ],
+      "requirements": [
+        "Python version will be listed per release."
+      ],
+      "docs": "../docs/python-pipeline.html",
+      "repository": "https://github.com/DNSkiran/DNSORIGINLABS",
+      "release": null,
+      "downloadEnabled": false
+    },
+    {
+      "id": "render-folder-toolkit",
+      "name": "Render Folder Toolkit",
+      "shortName": "Render Toolkit",
+      "category": "File Management",
+      "tags": [
+        "Render",
+        "Folders",
+        "Pipeline"
+      ],
+      "description": "Production-oriented helpers for finding render outputs and handling naming variations.",
+      "longDescription": "An evolving set of utilities for discovering expected render folders, nested folders and sequence outputs in production directories.",
+      "status": "Concept",
+      "version": "Concept",
+      "platforms": [
+        "Windows"
+      ],
+      "features": [
+        "Flexible folder matching",
+        "Nested folder scanning",
+        "Missing output reporting"
+      ],
+      "requirements": [
+        "To be announced"
+      ],
+      "docs": "../docs/nuke-workflow.html",
+      "repository": "https://github.com/DNSkiran/DNSORIGINLABS",
+      "release": null,
+      "downloadEnabled": false
+    },
+    {
+      "id": "image-sequence-helpers",
+      "name": "Image Sequence Helpers",
+      "shortName": "Sequence Helpers",
+      "category": "Image Processing",
+      "tags": [
+        "EXR",
+        "Sequence",
+        "Automation"
+      ],
+      "description": "Planned helpers to inspect, prepare and move image sequences between production stages.",
+      "longDescription": "A planned toolbox for sequence validation, frame range inspection and repeatable image preparation tasks.",
+      "status": "Planned",
+      "version": "Planned",
+      "platforms": [
+        "Windows"
+      ],
+      "features": [
+        "Frame range inspection",
+        "Sequence integrity checks",
+        "Metadata summaries"
+      ],
+      "requirements": [
+        "To be announced"
+      ],
+      "docs": "../docs/python-pipeline.html",
+      "repository": "https://github.com/DNSkiran/DNSORIGINLABS",
+      "release": null,
+      "downloadEnabled": false
+    },
+    {
+      "id": "artist-workflow-kit",
+      "name": "Artist Workflow Kit",
+      "shortName": "Workflow Kit",
+      "category": "Automation",
+      "tags": [
+        "Nuke",
+        "Maya",
+        "Python"
+      ],
+      "description": "A growing idea for small artist-first utilities that remove repetitive production steps.",
+      "longDescription": "A future collection of workflow helpers shaped around actual production pain points from compositing, lighting and CG pipelines.",
+      "status": "Concept",
+      "version": "Concept",
+      "platforms": [
+        "Windows"
+      ],
+      "features": [
+        "Workflow helpers",
+        "Configurable utilities",
+        "Artist-focused UX"
+      ],
+      "requirements": [
+        "To be announced"
+      ],
+      "docs": "../docs/index.html",
+      "repository": "https://github.com/DNSkiran/DNSORIGINLABS",
+      "release": null,
+      "downloadEnabled": false
+    },
+    {
+      "id": "maya-mel-script-kit",
+      "name": "Maya MEL Script Kit",
+      "shortName": "MEL Script Kit",
+      "category": "Maya",
+      "tags": [
+        "Maya",
+        "MEL",
+        "Lighting"
+      ],
+      "description": "A planned collection of Maya helpers for scene setup, lighting tasks and repeatable artist operations.",
+      "longDescription": "A future set of MEL and Python utilities organized for Maya workflows. Each release will include supported Maya versions, installation notes and tested examples.",
+      "status": "Planned",
+      "version": "Planned",
+      "platforms": [
+        "Autodesk Maya"
+      ],
+      "features": [
+        "MEL utility scripts",
+        "Scene setup helpers",
+        "Artist workflow automation"
+      ],
+      "requirements": [
+        "Maya version to be documented per release."
+      ],
+      "docs": "../docs/python-pipeline.html",
+      "repository": "https://github.com/DNSkiran/DNSORIGINLABS",
+      "release": null,
+      "downloadEnabled": false
+    },
+    {
+      "id": "blender-lighting-helpers",
+      "name": "Blender Lighting Helpers",
+      "shortName": "Blender Lighting",
+      "category": "Blender",
+      "tags": [
+        "Blender",
+        "Lighting",
+        "Python"
+      ],
+      "description": "Planned Python utilities for organizing lighting scenes and recurring Blender setup tasks.",
+      "longDescription": "A planned toolbox for lighting artists using Blender, with scene organization helpers and repeatable setup utilities.",
+      "status": "Planned",
+      "version": "Planned",
+      "platforms": [
+        "Blender"
+      ],
+      "features": [
+        "Lighting setup helpers",
+        "Scene organization",
+        "Python automation"
+      ],
+      "requirements": [
+        "Blender version to be documented per release."
+      ],
+      "docs": "../docs/python-pipeline.html",
+      "repository": "https://github.com/DNSkiran/DNSORIGINLABS",
+      "release": null,
+      "downloadEnabled": false
+    },
+    {
+      "id": "unreal-lighting-utilities",
+      "name": "Unreal Lighting Utilities",
+      "shortName": "Unreal Lighting",
+      "category": "Unreal Engine",
+      "tags": [
+        "Unreal Engine",
+        "Lighting",
+        "Python"
+      ],
+      "description": "Planned helpers for Unreal lighting workflows, scene review and production setup.",
+      "longDescription": "A planned collection of artist-facing helpers for Unreal Engine lighting pipelines. Compatibility and engine versions will be documented with each release.",
+      "status": "Concept",
+      "version": "Concept",
+      "platforms": [
+        "Unreal Engine"
+      ],
+      "features": [
+        "Lighting workflow helpers",
+        "Scene review utilities",
+        "Production setup"
+      ],
+      "requirements": [
+        "Engine version to be documented per release."
+      ],
+      "docs": "../docs/index.html",
+      "repository": "https://github.com/DNSkiran/DNSORIGINLABS",
+      "release": null,
+      "downloadEnabled": false
+    },
+    {
+      "id": "scene-utility-pack",
+      "name": "Scene Utility Pack",
+      "shortName": "Scene Utilities",
+      "category": "Scenes",
+      "tags": [
+        "Maya",
+        "Blender",
+        "Unreal",
+        "Scene Management"
+      ],
+      "description": "Planned scene inspection and preparation utilities for day-to-day production workflows.",
+      "longDescription": "A planned pack for scene checks, naming validation and lightweight production preparation.",
+      "status": "Concept",
+      "version": "Concept",
+      "platforms": [
+        "Maya",
+        "Blender",
+        "Unreal Engine"
+      ],
+      "features": [
+        "Scene metadata checks",
+        "Naming validation",
+        "Preparation reports"
+      ],
+      "requirements": [
+        "Supported software versions to be documented."
+      ],
+      "docs": "../docs/nuke-workflow.html",
+      "repository": "https://github.com/DNSkiran/DNSORIGINLABS",
+      "release": null,
+      "downloadEnabled": false
+    },
+    {
+      "id": "nuke-python-utilities",
+      "name": "Nuke Python Utilities",
+      "shortName": "Nuke Python",
+      "category": "Nuke",
+      "tags": [
+        "Nuke",
+        "Python",
+        "Compositing"
+      ],
+      "description": "Planned compositing helpers for sequence discovery, node setup and workflow automation.",
+      "longDescription": "A planned collection of Nuke Python tools with explicit supported Nuke versions, installation notes and test cases.",
+      "status": "Planned",
+      "version": "Planned",
+      "platforms": [
+        "Foundry Nuke"
+      ],
+      "features": [
+        "Sequence path helpers",
+        "Node setup utilities",
+        "Workflow automation"
+      ],
+      "requirements": [
+        "Nuke version to be documented per release."
+      ],
+      "docs": "../docs/nuke-workflow.html",
+      "repository": "https://github.com/DNSkiran/DNSORIGINLABS",
+      "release": null,
+      "downloadEnabled": false
+    }
+  ]
+}
