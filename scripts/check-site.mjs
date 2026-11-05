@@ -53,6 +53,25 @@ const required = [
 ];
 for (const file of required) assert(exists(file), `required file is missing: ${file}`);
 
+const htmlFiles = [
+  "index.html","404.html","pages/work.html","pages/tools.html","pages/pipeline.html",
+  "pages/learn.html","pages/about.html","pages/contact.html","pages/tool.html",
+  "pages/project.html","pages/tutorial.html","docs/index.html","docs/ocio-encoder.html",
+  "docs/python-pipeline.html","docs/nuke-workflow.html","admin/index.html"
+];
+for (const htmlFile of htmlFiles) {
+  const html = read(htmlFile);
+  for (const match of html.matchAll(/\\b(?:href|src)\\s*=\\s*["']([^"']+)["']/g)) {
+    const value = match[1];
+    if (!value || value.startsWith("#") || /^(https?:|mailto:|tel:|data:|javascript:)/i.test(value)) continue;
+    const clean = value.split(/[?#]/)[0];
+    if (!clean) continue;
+    const target = path.resolve(root, path.dirname(htmlFile), clean);
+    const isInside = target === root || target.startsWith(root + path.sep);
+    assert(isInside && fs.existsSync(target), `${htmlFile}: local reference does not exist: ${value}`);
+  }
+}
+
 for (const file of ["src/main.js","src/page.js","src/downloads.js","pages/interior.js","admin/admin.js"]) {
   const source = read(file);
   assert(source.length > 100, `${file}: file unexpectedly short`);
