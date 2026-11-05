@@ -13,11 +13,27 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  publish:
+  validate-and-publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check JavaScript syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in src/*.js pages/*.js admin/*.js; do
+            node --check "$file"
+          done
+
+      - name: Validate site data and structure
+        run: npm run check
 
       - name: Prepare static website
         shell: bash
