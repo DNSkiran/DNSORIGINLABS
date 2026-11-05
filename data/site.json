@@ -21,5 +21,11 @@
     "releases": "GitHub Releases for downloadable binary assets",
     "backend": "None in the current GitHub-only deployment",
     "authentication": "GitHub's own authenticated repository UI for publishing changes"
+  },
+  "seo": {
+    "url": "https://dnskiran.github.io/DNSORIGINLABS/",
+    "title": "DNS ORIGIN LABS — Create. Automate. Innovate.",
+    "description": "Creative technology for visual production. VFX work, artist-first tools, pipeline solutions and learning.",
+    "image": "./assets/og-cover.svg"
   }
 }
