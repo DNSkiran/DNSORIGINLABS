@@ -10,6 +10,7 @@
       <button class="active" data-panel="dashboard"><span>◈</span> Overview</button>
       <button data-panel="content"><span>▤</span> Content manager</button>
       <button data-panel="code"><span>⌘</span> Code editor</button>
+      <button data-panel="seo"><span>⌗</span> SEO manager</button>
       <button data-panel="releases"><span>⇩</span> Release manager</button>
       <button data-panel="assets"><span>▧</span> Asset manager</button>
       <button data-panel="github"><span>⌁</span> GitHub & deployment</button>
@@ -39,7 +40,14 @@
       <div class="admin-panel-intro"><span class="eyebrow">CMS / JSON CONTENT</span><h2>Visual content workspace</h2><p>Edit projects, applications, tutorials and site configuration. Drafts are saved in this browser until you export them or publish the file through GitHub.</p></div>
       <div class="editor-toolbar"><label>CONTENT COLLECTION<select id="content-file"><option value="data/tools.json">Tools & Applications</option><option value="data/projects.json">Portfolio Projects</option><option value="data/tutorials.json">Tutorials & Learn</option><option value="data/site.json">Site Configuration</option></select></label><div class="toolbar-actions"><button class="admin-button" id="load-content">Reload file</button><button class="admin-button" id="validate-content">Validate JSON</button></div></div>
       <div class="editor-status" id="content-status-message" aria-live="polite">Choose a content collection to begin.</div>
-      <textarea id="content-editor" class="code-editor json-editor" spellcheck="false" aria-label="JSON content editor"></textarea>
+      <div class="visual-cms">
+        <div class="visual-cms-head"><div><span class="eyebrow">VISUAL EDITOR</span><h3>Record manager</h3></div><div class="toolbar-actions"><button class="admin-button" id="add-record">+ Add record</button><button class="admin-button" id="delete-record">Delete selected</button></div></div>
+        <label class="record-select-label">SELECT RECORD<select id="visual-record"></select></label>
+        <div id="visual-record-fields" class="visual-record-fields"><p>Select a collection containing records.</p></div>
+        <div class="toolbar-actions visual-apply"><button class="admin-button admin-button-primary" id="apply-record">Apply visual changes to JSON</button></div>
+      </div>
+      <details class="advanced-json"><summary>Advanced JSON editor</summary>
+      <textarea id="content-editor" class="code-editor json-editor" spellcheck="false" aria-label="JSON content editor"></textarea></details>
       <div class="editor-footer"><div class="toolbar-actions"><button class="admin-button" id="save-content-draft">Save local draft</button><button class="admin-button" id="export-content">Export JSON</button></div><div class="toolbar-actions"><button class="admin-button admin-button-primary" id="open-content-github">Open file in GitHub ↗</button></div></div>
       <div class="admin-help"><strong>Publishing checklist:</strong> validate the JSON, save a local draft, export a backup if needed, open the matching file in GitHub, replace its contents, then commit to <code>main</code>. The workflow deploys the update to the <code>gh-pages</code> branch after Pages is configured.</div>
     </section>
@@ -53,6 +61,19 @@
       <textarea id="source-editor" class="code-editor" spellcheck="false" aria-label="Source code editor"></textarea>
       <div class="editor-footer"><div class="toolbar-actions"><button class="admin-button" id="save-source-draft">Save local draft</button><button class="admin-button" id="discard-source-draft">Discard local draft</button></div><button class="admin-button admin-button-primary" id="open-source-github">Edit this file on GitHub ↗</button></div>
       <div class="admin-help">For syntax-aware editing, use GitHub's editor or a local code editor. This text editor intentionally does not run code or store GitHub credentials.</div>
+    </section>
+
+    <section class="admin-panel" id="panel-seo">
+      <div class="admin-panel-intro"><span class="eyebrow">DISCOVERY / METADATA</span><h2>SEO & metadata manager</h2><p>Prepare the public site title, description, canonical site address and social preview image. Changes are local until you export and publish <code>data/site.json</code>. Individual page titles and descriptions remain editable in the Code Editor.</p></div>
+      <div class="admin-card seo-form">
+        <label>PUBLIC SITE URL<input id="seo-url" type="url" placeholder="https://dnskiran.github.io/DNSORIGINLABS/"></label>
+        <label>DEFAULT SITE TITLE<input id="seo-title" type="text" maxlength="70"></label>
+        <label>DEFAULT META DESCRIPTION<textarea id="seo-description" rows="3" maxlength="180"></textarea></label>
+        <label>SOCIAL PREVIEW IMAGE PATH<input id="seo-image" type="text" placeholder="./assets/og-cover.svg"></label>
+        <div class="toolbar-actions"><button class="admin-button" id="load-seo">Load current settings</button><button class="admin-button" id="save-seo-draft">Save local draft</button><button class="admin-button" id="export-seo">Export site.json</button><button class="admin-button admin-button-primary" id="open-seo-github">Open site.json in GitHub ↗</button></div>
+        <div class="editor-status" id="seo-status" aria-live="polite">Load current site metadata to begin.</div>
+      </div>
+      <div class="admin-help">Search engines may take time to discover updated pages. Keep page titles unique, use accurate descriptions, and only index public content that is ready for visitors.</div>
     </section>
 
     <section class="admin-panel" id="panel-releases">
