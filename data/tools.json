@@ -12,7 +12,10 @@
     "Image Processing",
     "File Management",
     "Automation",
-    "Desktop Applications"
+    "Desktop Applications",
+    "MEL Scripts",
+    "Scenes",
+    "Lighting"
   ],
   "items": [
     {
@@ -199,6 +202,159 @@
         "To be announced"
       ],
       "docs": "../docs/index.html",
+      "repository": "https://github.com/DNSkiran/DNSORIGINLABS",
+      "release": null,
+      "downloadEnabled": false
+    },
+    {
+      "id": "maya-mel-script-kit",
+      "name": "Maya MEL Script Kit",
+      "shortName": "MEL Script Kit",
+      "category": "Maya",
+      "tags": [
+        "Maya",
+        "MEL",
+        "Lighting"
+      ],
+      "description": "A planned collection of Maya helpers for scene setup, lighting tasks and repeatable artist operations.",
+      "longDescription": "A future set of MEL and Python utilities organized for Maya workflows. Each release will include supported Maya versions, installation notes and tested examples.",
+      "status": "Planned",
+      "version": "Planned",
+      "platforms": [
+        "Autodesk Maya"
+      ],
+      "features": [
+        "MEL utility scripts",
+        "Scene setup helpers",
+        "Artist workflow automation"
+      ],
+      "requirements": [
+        "Maya version to be documented per release."
+      ],
+      "docs": "../docs/python-pipeline.html",
+      "repository": "https://github.com/DNSkiran/DNSORIGINLABS",
+      "release": null,
+      "downloadEnabled": false
+    },
+    {
+      "id": "blender-lighting-helpers",
+      "name": "Blender Lighting Helpers",
+      "shortName": "Blender Lighting",
+      "category": "Blender",
+      "tags": [
+        "Blender",
+        "Lighting",
+        "Python"
+      ],
+      "description": "Planned Python utilities for organizing lighting scenes and recurring Blender setup tasks.",
+      "longDescription": "A planned toolbox for lighting artists using Blender, with scene organization helpers and repeatable setup utilities.",
+      "status": "Planned",
+      "version": "Planned",
+      "platforms": [
+        "Blender"
+      ],
+      "features": [
+        "Lighting setup helpers",
+        "Scene organization",
+        "Python automation"
+      ],
+      "requirements": [
+        "Blender version to be documented per release."
+      ],
+      "docs": "../docs/python-pipeline.html",
+      "repository": "https://github.com/DNSkiran/DNSORIGINLABS",
+      "release": null,
+      "downloadEnabled": false
+    },
+    {
+      "id": "unreal-lighting-utilities",
+      "name": "Unreal Lighting Utilities",
+      "shortName": "Unreal Lighting",
+      "category": "Unreal Engine",
+      "tags": [
+        "Unreal Engine",
+        "Lighting",
+        "Python"
+      ],
+      "description": "Planned helpers for Unreal lighting workflows, scene review and production setup.",
+      "longDescription": "A planned collection of artist-facing helpers for Unreal Engine lighting pipelines. Compatibility and engine versions will be documented with each release.",
+      "status": "Concept",
+      "version": "Concept",
+      "platforms": [
+        "Unreal Engine"
+      ],
+      "features": [
+        "Lighting workflow helpers",
+        "Scene review utilities",
+        "Production setup"
+      ],
+      "requirements": [
+        "Engine version to be documented per release."
+      ],
+      "docs": "../docs/index.html",
+      "repository": "https://github.com/DNSkiran/DNSORIGINLABS",
+      "release": null,
+      "downloadEnabled": false
+    },
+    {
+      "id": "scene-utility-pack",
+      "name": "Scene Utility Pack",
+      "shortName": "Scene Utilities",
+      "category": "Scenes",
+      "tags": [
+        "Maya",
+        "Blender",
+        "Unreal",
+        "Scene Management"
+      ],
+      "description": "Planned scene inspection and preparation utilities for day-to-day production workflows.",
+      "longDescription": "A planned pack for scene checks, naming validation and lightweight production preparation.",
+      "status": "Concept",
+      "version": "Concept",
+      "platforms": [
+        "Maya",
+        "Blender",
+        "Unreal Engine"
+      ],
+      "features": [
+        "Scene metadata checks",
+        "Naming validation",
+        "Preparation reports"
+      ],
+      "requirements": [
+        "Supported software versions to be documented."
+      ],
+      "docs": "../docs/nuke-workflow.html",
+      "repository": "https://github.com/DNSkiran/DNSORIGINLABS",
+      "release": null,
+      "downloadEnabled": false
+    },
+    {
+      "id": "nuke-python-utilities",
+      "name": "Nuke Python Utilities",
+      "shortName": "Nuke Python",
+      "category": "Nuke",
+      "tags": [
+        "Nuke",
+        "Python",
+        "Compositing"
+      ],
+      "description": "Planned compositing helpers for sequence discovery, node setup and workflow automation.",
+      "longDescription": "A planned collection of Nuke Python tools with explicit supported Nuke versions, installation notes and test cases.",
+      "status": "Planned",
+      "version": "Planned",
+      "platforms": [
+        "Foundry Nuke"
+      ],
+      "features": [
+        "Sequence path helpers",
+        "Node setup utilities",
+        "Workflow automation"
+      ],
+      "requirements": [
+        "Nuke version to be documented per release."
+      ],
+      "docs": "../docs/nuke-workflow.html",
       "repository": "https://github.com/DNSkiran/DNSORIGINLABS",
       "release": null,
       "downloadEnabled": false
