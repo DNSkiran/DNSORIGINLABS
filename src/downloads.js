@@ -1,9 +1,12 @@
-import { escapeHTML } from "./page.js";
-
 const releaseCache = new Map();
+const assetsByTool = new Map();
+let dialog;
+let activeAsset = null;
+let activeEmail = null;
+let observerReady = false;
 
-async function resolveRelease(tool) {
-  if (!tool.release || !tool.release.repo) return [];
+async function resolveAssets(tool) {
+  if (!tool.release?.repo) return [];
   const { repo, tag = "latest", assetName = "" } = tool.release;
   const endpoint = tag === "latest"
     ? `https://api.github.com/repos/${repo}/releases/latest`
@@ -16,74 +19,81 @@ async function resolveRelease(tool) {
   const release = await releaseCache.get(endpoint);
   if (!release || !Array.isArray(release.assets)) return [];
   return release.assets.filter(asset => !assetName || asset.name.toLowerCase() === assetName.toLowerCase())
-    .map(asset => ({ name: asset.name, url: asset.browser_download_url, size: asset.size, release: release.html_url }));
+    .map(asset => ({ name: asset.name, url: asset.browser_download_url, size: asset.size, releaseUrl: release.html_url }));
 }
 
-function formatSize(bytes) {
-  if (!Number.isFinite(bytes) || bytes <= 0) return "File size not listed";
-  const units = ["B","KB","MB","GB"];
-  let value = bytes, index = 0;
-  while (value >= 1024 && index < units.length - 1) { value /= 1024; index++; }
-  return `${value.toFixed(index > 1 ? 1 : 0)} ${units[index]}`;
-}
-
-export async function initDownloads(tools = []) {
-  const modal = document.createElement("dialog");
-  modal.className = "download-dialog";
-  modal.innerHTML = `
+function ensureDialog() {
+  if (dialog) return;
+  dialog = document.createElement("dialog");
+  dialog.className = "download-dialog";
+  dialog.innerHTML = `
     <form method="dialog" class="download-dialog-card" id="download-form">
       <button class="dialog-close" value="cancel" aria-label="Close">×</button>
       <div class="eyebrow">FREE TOOL DOWNLOAD</div>
       <h2>One quick step.</h2>
-      <p class="dialog-description">Enter an email address to continue. This static site checks only the email format in your browser. It does not save or transmit your address.</p>
+      <p class="dialog-description">Enter an email address to continue. It is checked only in this browser. DNS ORIGIN LABS does not save or transmit the address.</p>
       <label for="download-email">Email address</label>
       <input id="download-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
       <p class="dialog-error" aria-live="polite"></p>
       <button class="button button-primary" id="confirm-download" type="submit">Continue to download <span>↗</span></button>
       <small>Your address is not stored by DNS ORIGIN LABS.</small>
     </form>`;
-  document.body.append(modal);
-  const form = modal.querySelector("form");
-  const email = modal.querySelector("input");
-  const error = modal.querySelector(".dialog-error");
-  let selectedTool = null;
-  let selectedAsset = null;
-
-  const releaseResults = await Promise.all(tools.map(async tool => [tool.id, await resolveRelease(tool)]));
-  const assetsByTool = new Map(releaseResults);
-
-  document.querySelectorAll("[data-download-tool]").forEach(button => {
-    const tool = tools.find(item => item.id === button.dataset.downloadTool);
-    const assets = tool ? (assetsByTool.get(tool.id) || []) : [];
-    if (!tool || !tool.downloadEnabled || !assets.length) {
-      button.disabled = true;
-      button.textContent = "Release not published";
-      button.title = "A public GitHub Release asset is not available yet.";
-      return;
-    }
-    button.disabled = false;
-    button.textContent = "Free download ↗";
-    button.addEventListener("click", () => {
-      selectedTool = tool;
-      selectedAsset = assets[0];
-      error.textContent = "";
-      form.reset();
-      modal.showModal();
-      email.focus();
-    });
-  });
-
+  document.body.append(dialog);
+  const form = dialog.querySelector("form");
+  const email = dialog.querySelector("input");
+  const error = dialog.querySelector(".dialog-error");
   form.addEventListener("submit", event => {
     event.preventDefault();
-    if (!selectedTool || !selectedAsset) return;
+    if (!activeAsset) return;
     if (!email.checkValidity() || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) {
       error.textContent = "Enter a valid email address to continue.";
       email.focus();
       return;
     }
-    // The address is intentionally not persisted, logged or sent anywhere.
-    const destination = selectedAsset.url;
-    modal.close();
+    // The email address is intentionally not persisted, logged or sent anywhere.
+    const destination = activeAsset.url;
+    dialog.close();
     window.location.assign(destination);
   });
+}
+
+function updateDownloadButtons() {
+  document.querySelectorAll("[data-download-tool]").forEach(button => {
+    const items = assetsByTool.get(button.dataset.downloadTool) || [];
+    if (items.length) {
+      button.disabled = false;
+      button.textContent = "Free download ↗";
+      button.title = items.map(item => item.name).join(", ");
+    } else {
+      button.disabled = true;
+      button.textContent = "Release not published";
+      button.title = "A matching public GitHub Release asset is not available yet.";
+    }
+  });
+}
+
+export async function initDownloads(tools = []) {
+  ensureDialog();
+  await Promise.all(tools.map(async tool => {
+    if (!assetsByTool.has(tool.id)) assetsByTool.set(tool.id, await resolveAssets(tool));
+  }));
+  updateDownloadButtons();
+
+  if (!observerReady) {
+    const observer = new MutationObserver(updateDownloadButtons);
+    observer.observe(document.body, { childList: true, subtree: true });
+    document.addEventListener("click", event => {
+      const button = event.target.closest?.("[data-download-tool]");
+      if (!button || button.disabled) return;
+      const assets = assetsByTool.get(button.dataset.downloadTool) || [];
+      if (!assets.length) return;
+      activeAsset = assets[0];
+      activeEmail = dialog.querySelector("input");
+      dialog.querySelector(".dialog-error").textContent = "";
+      dialog.querySelector("form").reset();
+      dialog.showModal();
+      activeEmail.focus();
+    });
+    observerReady = true;
+  }
 }
