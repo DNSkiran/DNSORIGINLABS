@@ -176,7 +176,7 @@ async function saveSEO(){
 async function loadReleases(){
   try{
     const tools=JSON.parse(await fetchRepoFile("data/tools.json")).items||[];
-    $("#release-list").innerHTML=tools.map(tool=>`<div class="status-row"><strong>${tool.name}</strong><span>${tool.release?.repo?(`${tool.release.repo} / ${tool.release.tag||"latest"}`):"NO RELEASE CONFIGURED"} · ${tool.status.toUpperCase()}</span></div>`).join("");
+    $("#release-list").innerHTML=tools.map(tool=>`<div class="status-row"><strong>${escapeHTML(tool.name)}</strong><span>${tool.release?.repo?(`${escapeHTML(tool.release.repo)} / ${escapeHTML(tool.release.tag||"latest")}`):"NO RELEASE CONFIGURED"} · ${escapeHTML((tool.status||"").toUpperCase())}</span></div>`).join("");
   }catch(error){$("#release-list").textContent=error.message;}
 }
 function init(){
