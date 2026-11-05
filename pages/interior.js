@@ -1,4 +1,4 @@
-import { loadJSON, initNavigation, initReveals, setYear } from "../src/page.js";
+import { loadJSON, initNavigation, initReveals, setYear, escapeHTML } from "../src/page.js";
 import { initDownloads } from "../src/downloads.js";
 
 const page = document.body.dataset.page;
@@ -22,8 +22,8 @@ function renderProjects() {
   target.innerHTML = visible.map((item,index) => `
     <article class="project-card reveal">
       <a href="./project.html?id=${encodeURIComponent(item.id)}">
-        <div class="project-picture">${item.image ? `<img src="${item.image}" alt="">` : ""}<span>PROJECT / ${String(index+1).padStart(2,"0")}</span></div>
-        <div class="project-copy"><h3>${item.title}</h3><p>${item.summary || ""}</p><div class="project-meta">${item.discipline || "CREATIVE WORK"} / ${item.year || "PROJECT"}</div></div>
+        <div class="project-picture">${item.image ? `<img src="${escapeHTML(item.image)}" alt="">` : ""}<span>PROJECT / ${String(index+1).padStart(2,"0")}</span></div>
+        <div class="project-copy"><h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.summary || "")}</p><div class="project-meta">${escapeHTML(item.discipline || "CREATIVE WORK")} / ${escapeHTML(item.year || "PROJECT")}</div></div>
       </a>
     </article>`).join("");
   initReveals(target);
@@ -43,7 +43,7 @@ function renderCatalog() {
     target.replaceChildren(...visible.map(tool => {
       const article = document.createElement("article");
       article.className = "catalog-card reveal";
-      const tags = (tool.tags || []).map(tag => `<span>${tag}</span>`).join("");
+      const tags = (tool.tags || []).map(tag => `<span>${escapeHTML(tag)}</span>`).join("");
       article.innerHTML = `
         <div class="catalog-header"><span class="catalog-code"></span><span class="catalog-category"></span></div>
         <h3></h3><p></p><div class="catalog-tags">${tags}</div>
@@ -79,7 +79,7 @@ function renderTutorials() {
   if (count) count.textContent = `${visible.length} LEARNING TRACKS IN PREPARATION`;
   target.innerHTML = visible.map((item,index)=>`
     <article class="learn-row reveal"><div class="learn-badge">${["OCIO","PY","NK"][index%3]}</div>
-      <div><h3>${item.title}</h3><p>${item.summary || ""}</p><small>${item.level || "ALL LEVELS"} / ${(item.status || "draft").toUpperCase()}</small></div>
+      <div><h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.summary || "")}</p><small>${escapeHTML(item.level || "ALL LEVELS")} / ${escapeHTML((item.status || "draft").toUpperCase())}</small></div>
       <a href="./tutorial.html?id=${encodeURIComponent(item.id)}">Explore ↗</a>
     </article>`).join("");
   initReveals(target);
@@ -106,8 +106,9 @@ async function renderDetail(kind) {
   target.querySelector(".detail-lede").textContent=item.description||item.summary||"";
   target.querySelector(".detail-description").textContent=item.longDescription||item.body||item.summary||"";
   const features = item.features || (item.credits ? [item.credits] : []);
-  target.querySelector(".detail-features").innerHTML=features.map(f=>`<li>${f}</li>`).join("") || "<li>Details will be added.</li>";
-  target.querySelector(".detail-docs").innerHTML=item.docs ? `<a class="inline-link" href="${item.docs}">Open documentation ↗</a>` : "Documentation will be added.";
+  target.querySelector(".detail-features").innerHTML=features.map(f=>`<li>${escapeHTML(f)}</li>`).join("") || "<li>Details will be added.</li>";
+  const docsNode=target.querySelector(".detail-docs");
+  if(item.docs && /^(\.\.\/docs\/|\.\/docs\/)/.test(item.docs)){const link=document.createElement("a");link.className="inline-link";link.href=item.docs;link.textContent="Open documentation ↗";docsNode.replaceChildren(link);}else{docsNode.textContent="Documentation will be added.";}
   if (kind === "tool") {
     const button=document.createElement("button");
     button.className="button button-primary";
