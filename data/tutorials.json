@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "ocio-color-management",
+      "title": "Color Management for Artists",
+      "category": "Color Management",
+      "level": "Beginner",
+      "status": "draft",
+      "summary": "A practical introduction to color spaces, OCIO configurations, display transforms and review outputs.",
+      "body": "Lesson content is being prepared. Add a real tutorial, screenshots and sample files before publishing.",
+      "duration": "To be announced",
+      "featured": true
+    },
+    {
+      "id": "python-production",
+      "title": "Python for Production",
+      "category": "Python",
+      "level": "Beginner to Intermediate",
+      "status": "draft",
+      "summary": "Learn pathlib, naming patterns, logging, JSON configuration and production-safe automation.",
+      "body": "Lesson content is being prepared. Add examples, exercises and tested code before publishing.",
+      "duration": "To be announced",
+      "featured": true
+    },
+    {
+      "id": "nuke-workflow",
+      "title": "Organizing a Nuke Workflow",
+      "category": "Compositing",
+      "level": "Intermediate",
+      "status": "draft",
+      "summary": "Structure scripts, locate render sequences and build maintainable compositing utilities.",
+      "body": "Lesson content is being prepared. Add screenshots and a reproducible example before publishing.",
+      "duration": "To be announced",
+      "featured": true
+    }
+  ]
+}
