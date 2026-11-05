@@ -1,0 +1,16 @@
+{
+  "name": "DNS ORIGIN LABS",
+  "short_name": "DNS ORIGIN",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#080b0a",
+  "theme_color": "#080b0a",
+  "description": "Creative technology for visual production.",
+  "icons": [
+    {
+      "src": "./assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
