@@ -2,8 +2,25 @@ import { loadJSON, initNavigation, initReveals } from "./page.js";
 import { initDownloads } from "./downloads.js";
 
 const toolGrid = document.querySelector("#tool-grid");
-const toolsData = await loadJSON("./data/tools.json", { items: [] });
+const [toolsData, siteData] = await Promise.all([
+  loadJSON("./data/tools.json", { items: [] }),
+  loadJSON("./data/site.json", {})
+]);
 const tools = toolsData.items || [];
+if (siteData.seo) {
+  document.title = siteData.seo.title || document.title;
+  const description = document.querySelector('meta[name="description"]');
+  if (description && siteData.seo.description) description.content = siteData.seo.description;
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) ogTitle.content = siteData.seo.title || document.title;
+  const ogDescription = document.querySelector('meta[property="og:description"]');
+  if (ogDescription) ogDescription.content = siteData.seo.description || "";
+  const ogImage = document.querySelector('meta[property="og:image"]');
+  if (ogImage && siteData.seo.image) ogImage.content = new URL(siteData.seo.image, location.href).href;
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) { canonical=document.createElement("link");canonical.rel="canonical";document.head.append(canonical); }
+  if (siteData.seo.url) canonical.href = siteData.seo.url;
+}
 
 function cardFor(tool) {
   const card = document.createElement("article");
