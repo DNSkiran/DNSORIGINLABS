@@ -1,0 +1,25 @@
+{
+  "brand": "DNS ORIGIN LABS",
+  "tagline": "CREATE. AUTOMATE. INNOVATE.",
+  "descriptor": "Creative technology for visual production.",
+  "location": "Hyderabad, India",
+  "github": "https://github.com/DNSkiran",
+  "repository": "https://github.com/DNSkiran/DNSORIGINLABS",
+  "contactUrl": "https://github.com/DNSkiran",
+  "email": "",
+  "navigation": [
+    "Work",
+    "Tools",
+    "Pipeline",
+    "Learn",
+    "About",
+    "Contact"
+  ],
+  "architecture": {
+    "hosting": "GitHub Pages",
+    "content": "Version-controlled JSON, HTML, CSS and JavaScript files in this repository",
+    "releases": "GitHub Releases for downloadable binary assets",
+    "backend": "None in the current GitHub-only deployment",
+    "authentication": "GitHub's own authenticated repository UI for publishing changes"
+  }
+}
