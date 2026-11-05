@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Sitemap: https://dnskiran.github.io/DNSORIGINLABS/sitemap.xml
