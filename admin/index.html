@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080b0a"><meta name="robots" content="noindex,nofollow"><title>Admin Workspace | DNS ORIGIN LABS</title><link rel="icon" href="../assets/favicon.svg"><link rel="stylesheet" href="../styles.css"><link rel="stylesheet" href="./admin.css"><script type="module" src="./admin.js"></script></head>
+<body class="admin-body">
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <a class="brand" href="../index.html"><img src="../assets/brand-mark.svg" alt="" width="38" height="38"><span class="brand-wordmark">DNS <strong>ORIGIN</strong><small>LABS / ADMIN</small></span></a>
+    <div class="admin-side-label">WORKSPACE</div>
+    <nav class="admin-nav" aria-label="Admin sections">
+      <button class="active" data-panel="dashboard"><span>◈</span> Overview</button>
+      <button data-panel="content"><span>▤</span> Content manager</button>
+      <button data-panel="code"><span>⌘</span> Code editor</button>
+      <button data-panel="releases"><span>⇩</span> Release manager</button>
+      <button data-panel="assets"><span>▧</span> Asset manager</button>
+      <button data-panel="github"><span>⌁</span> GitHub & deployment</button>
+    </nav>
+    <div class="admin-sidebar-bottom"><span class="admin-live-dot"></span> LOCAL WORKSPACE ONLY<br><small>No server / no database</small></div>
+    <a class="admin-back" href="../index.html">← View public website</a>
+  </aside>
+  <main class="admin-main">
+    <header class="admin-topbar"><div><div class="eyebrow">DNS ORIGIN LABS / CONTROL ROOM</div><h1 id="panel-title">Workspace overview</h1></div><a class="admin-view-site" href="../index.html" target="_blank" rel="noopener">View live site ↗</a></header>
+    <div class="admin-warning"><strong>Static-site boundary:</strong> edits saved here stay in this browser. To publish changes, open the file in GitHub and commit it while signed in. Never paste a password, access token or secret into this workspace.</div>
+
+    <section class="admin-panel active" id="panel-dashboard">
+      <div class="admin-stat-grid">
+        <article><span>TOOLS & APPLICATIONS</span><strong id="stat-tools">—</strong><small>Catalog entries</small></article>
+        <article><span>PORTFOLIO PROJECTS</span><strong id="stat-projects">—</strong><small>Draft and published</small></article>
+        <article><span>LEARNING TRACKS</span><strong id="stat-tutorials">—</strong><small>Tutorial entries</small></article>
+        <article><span>LOCAL DRAFTS</span><strong id="stat-drafts">0</strong><small>Saved in this browser</small></article>
+      </div>
+      <div class="admin-grid-two">
+        <article class="admin-card"><div class="admin-card-head"><div><span class="eyebrow">QUICK ACTIONS</span><h2>Manage the lab</h2></div></div><div class="quick-actions"><button data-goto="content">Edit site content ↗</button><button data-goto="code">Open code editor ↗</button><button data-goto="releases">Manage releases ↗</button><button data-goto="github">Deployment settings ↗</button></div></article>
+        <article class="admin-card"><div class="admin-card-head"><div><span class="eyebrow">PUBLISHING MODEL</span><h2>GitHub is the source of truth.</h2></div></div><p>Public pages are built from version-controlled files. This control room makes local drafts, validates JSON and prepares files for GitHub. Only a commit to the repository changes the published site.</p><a class="admin-text-link" href="https://github.com/DNSkiran/DNSORIGINLABS" target="_blank" rel="noopener">Open repository ↗</a></article>
+      </div>
+      <div class="admin-card"><div class="admin-card-head"><div><span class="eyebrow">CONTENT STATUS</span><h2>What visitors can see</h2></div></div><div id="content-status" class="status-list"></div></div>
+    </section>
+
+    <section class="admin-panel" id="panel-content">
+      <div class="admin-panel-intro"><span class="eyebrow">CMS / JSON CONTENT</span><h2>Visual content workspace</h2><p>Edit projects, applications, tutorials and site configuration. Drafts are saved in this browser until you export them or publish the file through GitHub.</p></div>
+      <div class="editor-toolbar"><label>CONTENT COLLECTION<select id="content-file"><option value="data/tools.json">Tools & Applications</option><option value="data/projects.json">Portfolio Projects</option><option value="data/tutorials.json">Tutorials & Learn</option><option value="data/site.json">Site Configuration</option></select></label><div class="toolbar-actions"><button class="admin-button" id="load-content">Reload file</button><button class="admin-button" id="validate-content">Validate JSON</button></div></div>
+      <div class="editor-status" id="content-status-message" aria-live="polite">Choose a content collection to begin.</div>
+      <textarea id="content-editor" class="code-editor json-editor" spellcheck="false" aria-label="JSON content editor"></textarea>
+      <div class="editor-footer"><div class="toolbar-actions"><button class="admin-button" id="save-content-draft">Save local draft</button><button class="admin-button" id="export-content">Export JSON</button></div><div class="toolbar-actions"><button class="admin-button admin-button-primary" id="open-content-github">Open file in GitHub ↗</button></div></div>
+      <div class="admin-help"><strong>Publishing checklist:</strong> validate the JSON, save a local draft, export a backup if needed, open the matching file in GitHub, replace its contents, then commit to <code>main</code>. The workflow deploys the update to the <code>gh-pages</code> branch after Pages is configured.</div>
+    </section>
+
+    <section class="admin-panel" id="panel-code">
+      <div class="admin-panel-intro"><span class="eyebrow">DEVELOPMENT / SOURCE FILES</span><h2>Code editor</h2><p>Inspect and draft edits to site HTML, CSS, JavaScript and data files. This is a browser-based source editor, not a privileged Git client.</p></div>
+      <div class="editor-toolbar"><label>SOURCE FILE<select id="source-file">
+        <option>index.html</option><option>styles.css</option><option>src/main.js</option><option>src/page.js</option><option>src/downloads.js</option><option>src/interior.js</option><option>data/tools.json</option><option>data/projects.json</option><option>data/tutorials.json</option><option>data/site.json</option><option>pages/inner.css</option><option>pages/work.html</option><option>pages/tools.html</option><option>pages/pipeline.html</option><option>pages/learn.html</option><option>pages/about.html</option><option>pages/contact.html</option><option>admin/admin.js</option><option>admin/admin.css</option><option>.github/workflows/pages.yml</option><option>README.md</option>
+      </select></label><div class="toolbar-actions"><button class="admin-button" id="load-source">Load source</button><button class="admin-button" id="export-source">Download file</button></div></div>
+      <div class="editor-status" id="source-status" aria-live="polite">Select a source file.</div>
+      <textarea id="source-editor" class="code-editor" spellcheck="false" aria-label="Source code editor"></textarea>
+      <div class="editor-footer"><div class="toolbar-actions"><button class="admin-button" id="save-source-draft">Save local draft</button><button class="admin-button" id="discard-source-draft">Discard local draft</button></div><button class="admin-button admin-button-primary" id="open-source-github">Edit this file on GitHub ↗</button></div>
+      <div class="admin-help">For syntax-aware editing, use GitHub's editor or a local code editor. This text editor intentionally does not run code or store GitHub credentials.</div>
+    </section>
+
+    <section class="admin-panel" id="panel-releases">
+      <div class="admin-panel-intro"><span class="eyebrow">DISTRIBUTION / GITHUB RELEASES</span><h2>Release manager</h2><p>Publish large installers and tool packages as GitHub Release assets. Keep binaries out of the website source repository.</p></div>
+      <div class="release-guidance"><div><b>01</b><h3>Create a release</h3><p>Use a version tag such as <code>v1.0.0</code>, add release notes, attach the installer/archive, then publish.</p></div><div><b>02</b><h3>Connect the asset</h3><p>In <code>data/tools.json</code>, set the matching <code>release.repo</code>, <code>release.tag</code> and exact <code>release.assetName</code>.</p></div><div><b>03</b><h3>Verify the download</h3><p>The public site checks GitHub Releases. The free download button activates only when the matching public asset exists.</p></div></div>
+      <div class="admin-card"><div class="admin-card-head"><div><span class="eyebrow">RELEASE CATALOG</span><h2>Current tool entries</h2></div><a class="admin-text-link" href="https://github.com/DNSkiran/DNSORIGINLABS/releases" target="_blank" rel="noopener">All releases ↗</a></div><div id="release-list" class="status-list"></div><a class="admin-button admin-button-primary" href="https://github.com/DNSkiran/DNSORIGINLABS/releases/new" target="_blank" rel="noopener">Create a GitHub release ↗</a></div>
+      <div class="admin-help">The website validates email syntax locally before redirecting to a release asset. Email addresses are not saved or transmitted. There is no payment or license activation system enabled.</div>
+    </section>
+
+    <section class="admin-panel" id="panel-assets">
+      <div class="admin-panel-intro"><span class="eyebrow">MEDIA / FILE MANAGEMENT</span><h2>Asset manager</h2><p>Manage portfolio media and downloadable binaries through GitHub's own authenticated interfaces.</p></div>
+      <div class="admin-grid-two"><article class="admin-card"><span class="eyebrow">PORTFOLIO IMAGES & DOCUMENTS</span><h2>Repository assets</h2><p>For small web images and SVGs, add files under <code>assets/</code>. Update project image paths in <code>data/projects.json</code>. Do not publish confidential production material without permission.</p><a class="admin-button" href="https://github.com/DNSkiran/DNSORIGINLABS/tree/main/assets" target="_blank" rel="noopener">Open assets folder ↗</a></article><article class="admin-card"><span class="eyebrow">APPLICATIONS / INSTALLERS</span><h2>Large binaries</h2><p>For installers and large archives, use GitHub Releases. Add release assets there and connect exact filenames in the tools catalogue.</p><a class="admin-button" href="https://github.com/DNSkiran/DNSORIGINLABS/releases" target="_blank" rel="noopener">Open release assets ↗</a></article></div>
+      <div class="admin-help">GitHub Pages is not an application file host. Avoid committing EXR sequences, installers or multi-hundred-megabyte archives into the website source repository.</div>
+    </section>
+
+    <section class="admin-panel" id="panel-github">
+      <div class="admin-panel-intro"><span class="eyebrow">SOURCE CONTROL / DELIVERY</span><h2>GitHub & deployment</h2><p>Repository management, publishing, deployment status and platform configuration.</p></div>
+      <div class="github-link-grid">
+        <a href="https://github.com/DNSkiran/DNSORIGINLABS" target="_blank" rel="noopener"><span>REPOSITORY</span><strong>Browse source code ↗</strong></a>
+        <a href="https://github.com/DNSkiran/DNSORIGINLABS/settings/pages" target="_blank" rel="noopener"><span>GITHUB PAGES</span><strong>Configure Pages ↗</strong></a>
+        <a href="https://github.com/DNSkiran/DNSORIGINLABS/actions" target="_blank" rel="noopener"><span>CI / DEPLOYMENT</span><strong>View workflow runs ↗</strong></a>
+        <a href="https://github.com/DNSkiran/DNSORIGINLABS/releases" target="_blank" rel="noopener"><span>RELEASES</span><strong>Manage downloads ↗</strong></a>
+        <a href="https://github.com/DNSkiran/DNSORIGINLABS/issues" target="_blank" rel="noopener"><span>ISSUES</span><strong>Track work ↗</strong></a>
+        <a href="https://github.com/DNSkiran/DNSORIGINLABS/edit/main/README.md" target="_blank" rel="noopener"><span>DOCUMENTATION</span><strong>Edit README ↗</strong></a>
+      </div>
+      <div class="admin-card architecture-admin"><span class="eyebrow">INFRASTRUCTURE / CURRENT DESIGN</span><h2>No hidden backend.</h2><p>GitHub Pages serves static files. JSON documents are the content store. GitHub Releases hosts build downloads. GitHub's own login protects commits and settings. This meets the GitHub-only, no-personal-computer, ₹0 architecture without exposing secrets in the public client.</p><div class="architecture-flow"><span>CONTENT JSON</span><b>→</b><span>GITHUB MAIN</span><b>→</b><span>GITHUB ACTIONS</span><b>→</b><span>GH-PAGES</span></div></div>
+    </section>
+  </main>
+</div>
+</body></html>
