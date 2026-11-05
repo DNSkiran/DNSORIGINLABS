@@ -11,7 +11,7 @@ function cardFor(tool) {
   card.innerHTML = `
     <div class="tool-top"><span class="tool-icon"></span><span class="tool-tag"></span></div>
     <h3></h3><p></p>
-    <div class="tool-bottom"><span></span><a class="tool-details">DETAILS ↗</a><button type="button" class="tool-download" data-download-tool="">Check release</button></div>`;
+    <div class="tool-bottom"><span></span><a class="tool-details">DETAILS ↗</a><button type="button" class="tool-download" data-download-tool="">Checking release</button></div>`;
   card.querySelector(".tool-icon").textContent = (tool.name || "DO").slice(0,2).toUpperCase();
   card.querySelector(".tool-tag").textContent = (tool.category || "TOOL").toUpperCase();
   card.querySelector("h3").textContent = tool.name;
@@ -24,9 +24,14 @@ function cardFor(tool) {
 
 function renderTools(filter = "all") {
   if (!toolGrid) return;
-  const selected = tools.filter(tool => filter === "all" || tool.category?.toLowerCase() === filter);
-  const featured = selected.slice(0,6);
-  toolGrid.replaceChildren(...featured.map(cardFor));
+  const groups = {
+    all: () => true,
+    color: tool => /color|ocio/i.test(tool.category || ""),
+    pipeline: tool => /pipeline|automation|file management/i.test(tool.category || ""),
+    compositing: tool => /nuke|compositing/i.test(tool.category || "")
+  };
+  const predicate = groups[filter] || groups.all;
+  toolGrid.replaceChildren(...tools.filter(predicate).slice(0,6).map(cardFor));
   initReveals(toolGrid);
 }
 
