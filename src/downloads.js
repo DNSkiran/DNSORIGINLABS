@@ -6,7 +6,7 @@ let activeEmail = null;
 let observerReady = false;
 
 async function resolveAssets(tool) {
-  if (!tool.release?.repo) return [];
+  if (!tool.downloadEnabled || !tool.release?.repo) return [];
   const { repo, tag = "latest", assetName = "" } = tool.release;
   const endpoint = tag === "latest"
     ? `https://api.github.com/repos/${repo}/releases/latest`
@@ -57,13 +57,20 @@ function ensureDialog() {
   });
 }
 
+function formatSize(bytes) {
+  if (!Number.isFinite(bytes) || bytes <= 0) return "size unavailable";
+  const units=["B","KB","MB","GB"];let value=bytes,index=0;
+  while(value>=1024&&index<units.length-1){value/=1024;index++;}
+  return `${value.toFixed(index>1?1:0)} ${units[index]}`;
+}
+
 function updateDownloadButtons() {
   document.querySelectorAll("[data-download-tool]").forEach(button => {
     const items = assetsByTool.get(button.dataset.downloadTool) || [];
     if (items.length) {
       button.disabled = false;
-      button.textContent = "Free download ↗";
-      button.title = items.map(item => item.name).join(", ");
+      button.textContent = `Free download · ${formatSize(items[0].size)} ↗`;
+      button.title = items.map(item => `${item.name} (${formatSize(item.size)})`).join(", ");
     } else {
       button.disabled = true;
       button.textContent = "Release not published";
